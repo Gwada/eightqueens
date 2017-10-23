@@ -30,8 +30,8 @@ int		ft_is_safe(int *tab, int Q)
 			i = -1;
 		}
 		else if ((tab[Q] == tab[i])
-		|| (tab[Q] == tab[i] - (Q - i))		//verif diag inf
-		|| (tab[Q] == tab[i] + (Q - i)))	//verif diag sup
+		|| (tab[Q] == tab[i] - (Q - i))
+		|| (tab[Q] == tab[i] + (Q - i)))
 		{
 			tab[Q]++;
 			i = -1;
@@ -49,6 +49,6 @@ int		ft_eight_queens_puzzle(void)
 
 int		main(void)
 {
-	printf("\n%d possibilites\n", ft_eight_queens_puzzle());
+	printf("il y a %d possibilites\n", ft_eight_queens_puzzle());
 	return (0);
 }
