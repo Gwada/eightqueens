@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int		ft_print_result(int *tab)
+int			ft_print_result(int *tab)
 {
 	int		i;
 
@@ -11,13 +11,8 @@ int		ft_print_result(int *tab)
 	return (1);
 }
 
-int		ft_is_safe(int *tab, int Q)
+int			ft_is_safe(int *tab, int Q, int i, int poss)
 {
-	int		i;
-	int		poss;
-
-	i = -1;
-	poss = 0;
 	tab[Q] = 1;
 	if (Q == 8)
 		return (ft_print_result(tab));
@@ -25,13 +20,12 @@ int		ft_is_safe(int *tab, int Q)
 	{
 		if (++i == Q)
 		{
-			poss += ft_is_safe(tab, Q + 1);
+			poss += ft_is_safe(tab, Q + 1, -1, 0);
 			tab[Q]++;
 			i = -1;
 		}
-		else if ((tab[Q] == tab[i])
-			|| (tab[Q] == tab[i] - (Q - i))
-			|| (tab[Q] == tab[i] + (Q - i)))
+		else if (tab[Q] == tab[i] || tab[Q] == tab[i] - (Q - i)
+		|| tab[Q] == tab[i] + (Q - i))
 		{
 			tab[Q]++;
 			i = -1;
@@ -40,15 +34,10 @@ int		ft_is_safe(int *tab, int Q)
 	return (poss);
 }
 
-int		ft_eight_queens_puzzle(void)
+int			main(void)
 {
 	int		tab[8];
 
-	return (ft_is_safe(tab, 0));
-}
-
-int		main(void)
-{
-	printf("il y a %d possibilites\n", ft_eight_queens_puzzle());
+	printf("il y a %d possibilites\n", ft_is_safe(tab, 0, -1, 0));
 	return (0);
 }
